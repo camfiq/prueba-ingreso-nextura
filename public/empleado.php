@@ -28,14 +28,11 @@ switch ($action) {
         }
         break;
     case 'edit':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->store($_POST);
-            echo json_encode($controller->edit($_POST));
-        }
+        $controller->edit($id);
         break;
     case 'update':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->update($_POST);
+            echo json_encode($controller->update($_POST));
         }
         break;
     case 'delete':

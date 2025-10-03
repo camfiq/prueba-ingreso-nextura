@@ -15,6 +15,13 @@ class EmpleadoRol
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getRolesByEmpleadoId($empleadoID)
+    {
+        $stmt = $this->conexion->prepare("SELECT rol_id FROM empleado_rol WHERE empleado_id = ?");
+        $stmt->execute([$empleadoID]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
     public function find($empleadoID, $rolID)
     {
         $stmt = $this->conexion->prepare("SELECT * FROM empleado_rol WHERE empleado_id=? AND rol_id=?");
@@ -38,5 +45,11 @@ class EmpleadoRol
     {
         $stmt = $this->conexion->prepare("DELETE FROM empleado_rol WHERE empleado_id=? AND rol_id=$rolID");
         return $stmt->execute([$empleadoID, $rolID]);
+    }
+
+    public function deleteAllByEmpleadoId($empleadoID)
+    {
+        $stmt = $this->conexion->prepare("DELETE FROM empleado_rol WHERE empleado_id = ?");
+        return $stmt->execute([$empleadoID]);
     }
 }

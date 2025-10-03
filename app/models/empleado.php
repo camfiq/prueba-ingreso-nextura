@@ -13,7 +13,7 @@ class Empleado
         $sql = "INSERT INTO empleados (nombre, email, sexo, area_id, boletin, descripcion) 
                 VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conexion->prepare($sql);
-        return $stmt->execute([
+        $stmt->execute([
             $data['nombre'],
             $data['email'],
             $data['sexo'],
@@ -21,6 +21,7 @@ class Empleado
             $data['boletin'],
             $data['descripcion']
         ]);
+        return $this->conexion->lastInsertId();
     }
 
     // Sin áreas
