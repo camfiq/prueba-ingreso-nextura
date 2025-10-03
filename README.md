@@ -34,7 +34,7 @@ Este proyecto es una aplicación en PHP desarrollada como prueba técnica. Está
 
    Ejemplo en navegador:  
    ```
-   http://localhost/nexura-prueba/index.php
+   http://localhost/prueba-ingreso-nextura/index.php
    ```
 
 ## Estructura del proyecto
